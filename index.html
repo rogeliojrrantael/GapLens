@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GapLens | Find Research Gaps Faster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">
+          <span class="brand-mark">GL</span>
+          <span>GapLens</span>
+        </div>
+        <div class="badge">Semantic Discovery for PhD Researchers</div>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <p class="eyebrow">Research Mapping Without Boolean Guesswork</p>
+          <h1>Find research gaps with semantic search, publication trends, and country signals.</h1>
+          <p class="hero-text">
+            Explore who is publishing, how the topic has evolved over time, and where the literature still looks thin.
+            This prototype uses a lightweight ML-style semantic engine instead of strict keyword AND/OR matching.
+          </p>
+
+          <form id="searchForm" class="search-panel">
+            <label class="search-label" for="searchInput">Describe your topic in natural language</label>
+            <div class="search-row">
+              <input
+                id="searchInput"
+                name="query"
+                type="text"
+                value="mental health support for phd students using AI"
+                placeholder="e.g. climate adaptation in small island nations"
+                autocomplete="off"
+              >
+              <button type="submit">Analyze Topic</button>
+            </div>
+            <p class="search-hint">Try phrases like “gender bias in peer review”, “low-resource NLP for healthcare”, or “urban heat adaptation in Africa”.</p>
+          </form>
+
+          <div class="quick-tags" id="quickTags"></div>
+        </section>
+
+        <aside class="hero-card">
+          <p class="stat-label">What this helps with</p>
+          <ul class="feature-list">
+            <li>Surfaces semantically related literature</li>
+            <li>Highlights countries actively publishing on the topic</li>
+            <li>Shows publication momentum across years</li>
+            <li>Points to underexplored methods, populations, and regions</li>
+          </ul>
+          <div class="mini-note">
+            <strong>Why semantic?</strong>
+            <span>Searching “doctoral wellbeing” can still match research framed as “graduate student mental health” or “researcher burnout”.</span>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="overview-grid">
+        <article class="panel insight-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Gap Summary</p>
+              <h2>Best-fit opportunity</h2>
+            </div>
+            <span class="pill" id="semanticScorePill">Semantic Match</span>
+          </div>
+          <div id="gapSummary" class="gap-summary"></div>
+        </article>
+
+        <article class="panel stat-panel">
+          <div class="stat-grid" id="topStats"></div>
+        </article>
+      </section>
+
+      <section class="analytics-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Publication Trend</p>
+              <h2>Number of publications through the years</h2>
+            </div>
+          </div>
+          <div id="trendChart" class="chart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Country Activity</p>
+              <h2>Which countries are researching it?</h2>
+            </div>
+          </div>
+          <div id="countryChart" class="chart"></div>
+        </article>
+      </section>
+
+      <section class="results-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Semantic Results</p>
+              <h2>Closest matching papers and projects</h2>
+            </div>
+          </div>
+          <div id="resultList" class="result-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Research Gap Signals</p>
+              <h2>What looks underexplored?</h2>
+            </div>
+          </div>
+          <div id="gapList" class="gap-list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
